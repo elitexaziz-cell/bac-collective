@@ -1,0 +1,5 @@
+- [ ] Map current local data flows and authentication integration
+- [ ] Create secure database schema, policies, triggers, and initial community content
+- [ ] Add signup, login, logout, and profile management
+- [ ] Replace local mock storage with persistent realtime data
+- [ ] Validate user flows, security, and mobile layout
