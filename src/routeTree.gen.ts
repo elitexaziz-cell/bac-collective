@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChatRouteImport } from './routes/chat'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as DiscussionsIndexRouteImport } from './routes/discussions.index'
+import { Route as DiscussionsDiscussionIdRouteImport } from './routes/discussions.$discussionId'
+import { Route as TopicsIndexRouteImport } from './routes/topics.index'
+import { Route as TopicsTopicIdRouteImport } from './routes/topics.$topicId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChatRoute = ChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiscussionsIndexRoute = DiscussionsIndexRouteImport.update({
+  id: '/discussions/',
+  path: '/discussions/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiscussionsDiscussionIdRoute = DiscussionsDiscussionIdRouteImport.update({
+  id: '/discussions/$discussionId',
+  path: '/discussions/$discussionId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TopicsIndexRoute = TopicsIndexRouteImport.update({
+  id: '/topics/',
+  path: '/topics/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TopicsTopicIdRoute = TopicsTopicIdRouteImport.update({
+  id: '/topics/$topicId',
+  path: '/topics/$topicId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
+  '/profile': typeof ProfileRoute
+  '/discussions/$discussionId': typeof DiscussionsDiscussionIdRoute
+  '/topics/$topicId': typeof TopicsTopicIdRoute
+  '/discussions/': typeof DiscussionsIndexRoute
+  '/topics/': typeof TopicsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
+  '/profile': typeof ProfileRoute
+  '/discussions/$discussionId': typeof DiscussionsDiscussionIdRoute
+  '/topics/$topicId': typeof TopicsTopicIdRoute
+  '/discussions': typeof DiscussionsIndexRoute
+  '/topics': typeof TopicsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
+  '/profile': typeof ProfileRoute
+  '/discussions/$discussionId': typeof DiscussionsDiscussionIdRoute
+  '/topics/$topicId': typeof TopicsTopicIdRoute
+  '/discussions/': typeof DiscussionsIndexRoute
+  '/topics/': typeof TopicsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/chat'
+    | '/profile'
+    | '/discussions/$discussionId'
+    | '/topics/$topicId'
+    | '/discussions/'
+    | '/topics/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/chat'
+    | '/profile'
+    | '/discussions/$discussionId'
+    | '/topics/$topicId'
+    | '/discussions'
+    | '/topics'
+  id:
+    | '__root__'
+    | '/'
+    | '/chat'
+    | '/profile'
+    | '/discussions/$discussionId'
+    | '/topics/$topicId'
+    | '/discussions/'
+    | '/topics/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChatRoute: typeof ChatRoute
+  ProfileRoute: typeof ProfileRoute
+  DiscussionsDiscussionIdRoute: typeof DiscussionsDiscussionIdRoute
+  TopicsTopicIdRoute: typeof TopicsTopicIdRoute
+  DiscussionsIndexRoute: typeof DiscussionsIndexRoute
+  TopicsIndexRoute: typeof TopicsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chat': {
+      id: '/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discussions/': {
+      id: '/discussions/'
+      path: '/discussions'
+      fullPath: '/discussions/'
+      preLoaderRoute: typeof DiscussionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discussions/$discussionId': {
+      id: '/discussions/$discussionId'
+      path: '/discussions/$discussionId'
+      fullPath: '/discussions/$discussionId'
+      preLoaderRoute: typeof DiscussionsDiscussionIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/topics/': {
+      id: '/topics/'
+      path: '/topics'
+      fullPath: '/topics/'
+      preLoaderRoute: typeof TopicsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/topics/$topicId': {
+      id: '/topics/$topicId'
+      path: '/topics/$topicId'
+      fullPath: '/topics/$topicId'
+      preLoaderRoute: typeof TopicsTopicIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChatRoute: ChatRoute,
+  ProfileRoute: ProfileRoute,
+  DiscussionsDiscussionIdRoute: DiscussionsDiscussionIdRoute,
+  TopicsTopicIdRoute: TopicsTopicIdRoute,
+  DiscussionsIndexRoute: DiscussionsIndexRoute,
+  TopicsIndexRoute: TopicsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
