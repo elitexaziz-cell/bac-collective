@@ -85,9 +85,9 @@ function HomePage() {
       </section>
 
       <div className="grid gap-4 lg:grid-cols-2">
-        <section className="panel p-5">
-          <div className="flex items-center justify-between gap-3">
-            <h2 className="font-display text-lg font-semibold">{t("home.recentDiscussions")}</h2>
+        <section className="panel min-w-0 p-5">
+          <div className="flex min-w-0 items-center justify-between gap-3">
+            <h2 className="min-w-0 truncate font-display text-lg font-semibold">{t("home.recentDiscussions")}</h2>
             <Link to="/discussions" className="text-xs font-semibold text-ember hover:underline">
               {t("action.viewAll")}
             </Link>
