@@ -100,7 +100,7 @@ function HomePage() {
                   key={discussion.id}
                   to="/discussions/$discussionId"
                   params={{ discussionId: discussion.id }}
-                  className="flex items-center gap-3 py-3"
+                  className="flex min-w-0 items-center gap-3 py-3"
                 >
                   <UserAvatar profile={author} size="sm" />
                   <span className="min-w-0 flex-1">
