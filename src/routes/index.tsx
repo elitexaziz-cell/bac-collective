@@ -124,9 +124,9 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="panel p-5">
-          <div className="flex items-center justify-between gap-3">
-            <h2 className="font-display text-lg font-semibold">{t("home.recentTopics")}</h2>
+        <section className="panel min-w-0 p-5">
+          <div className="flex min-w-0 items-center justify-between gap-3">
+            <h2 className="min-w-0 truncate font-display text-lg font-semibold">{t("home.recentTopics")}</h2>
             <Link to="/topics" className="text-xs font-semibold text-ember hover:underline">
               {t("action.browse")}
             </Link>
